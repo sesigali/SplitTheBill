@@ -6,5 +6,6 @@
     android:divider="@android:color/darker_gray"
     android:dividerHeight="1dp"
     android:padding="16dp"
-    android:orientation="vertical" />
+    android:orientation="vertical"
+    tools:context=".view.MainActivity"/>
 
