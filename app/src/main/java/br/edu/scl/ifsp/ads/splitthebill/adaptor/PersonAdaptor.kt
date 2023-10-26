@@ -4,44 +4,57 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
 import br.edu.scl.ifsp.ads.splitthebill.R
 import br.edu.scl.ifsp.ads.splitthebill.model.Person
 
-class PersonAdapter(private val context: Context, private val personList: MutableList<Person>) :
-    RecyclerView.Adapter<PersonAdapter.PersonViewHolder>() {
+class PersonAdapter(
+    context: Context,
+    private val personList: MutableList<Person>
+) : ArrayAdapter<Person>(context, R.layout.tile_person, personList) {
+    // Classe interna para armazenar as visualizações de cada item da lista
+    private data class TilePersonHolder(val nameTv: TextView, val spentTv: TextView, val debtTv: TextView)
 
-    inner class PersonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val nameTv: TextView = itemView.findViewById(R.id.nameTv) as TextView
-        val spentTv: TextView = itemView.findViewById(R.id.spentTv) as TextView
-        val debtTv: TextView = itemView.findViewById(R.id.debtTv) as TextView
-    }
-
-    // Cria e retorna uma nova instância do ViewHolder.
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.tile_person, parent, false)
-        return PersonViewHolder(itemView)
-    }
-
-    // Preenche os dados do ViewHolder com os dados da pessoa na posição especificada.
-    override fun onBindViewHolder(holder: PersonViewHolder, position: Int) {
+    // Método para criar ou reutilizar a visualização de um item da lista
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val person = personList[position]
+        var personTileView = convertView
 
-        with(holder) {
+        if (personTileView == null) {
+            // Se a visualização ainda não existe, inflamos uma nova
+            personTileView =
+                (context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater).inflate(
+                    R.layout.tile_person,
+                    parent,
+                    false
+                )
+
+            // Criamos um objeto TilePersonHolder para armazenar as visualizações de cada elemento
+            val tilePersonHolder = TilePersonHolder(
+                personTileView.findViewById(R.id.nameTv),
+                personTileView.findViewById(R.id.spentTv),
+                personTileView.findViewById(R.id.debtTv)
+            )
+
+            // Associamos o objeto TilePersonHolder à visualização para reutilização
+            personTileView.tag = tilePersonHolder
+        }
+
+        // Utilizamos o objeto TilePersonHolder para configurar as visualizações com os dados da pessoa
+        with(personTileView?.tag as TilePersonHolder) {
             nameTv.text = person.name
-            spentTv.text = "Dinheiro Gasto: ${person.spent}"
+            spentTv.text = "Dinheiro Gasto: " + person.spent
+
+            // Verificamos se a dívida é negativa para ajustar a exibição
             if (person.debt.toDouble() < 0) {
                 person.debt = (person.debt.toDouble() * -1).toString()
-                debtTv.text = "Deve Receber: R$ ${person.debt}"
+                debtTv.text = "Deve Receber: R$" + person.debt
             } else {
-                debtTv.text = "Deve Pagar: R$ ${person.debt}"
+                debtTv.text = "Deve Pagar: R$" + person.debt
             }
         }
-    }
 
-    // Retorna o número total de itens na lista.
-    override fun getItemCount(): Int {
-        return personList.size
+        return personTileView
     }
 }
