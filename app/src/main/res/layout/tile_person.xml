@@ -14,16 +14,51 @@
         android:textSize="25sp" />
 
     <TextView
-        android:id="@+id/spentTv"
+        android:id="@+id/description1Tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Valor gasto: R$"
+        android:text="Descrição: "
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/item1Tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Valor: R$"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/description2Tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Descrição: "
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/item2Tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Valor: R$"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/description3Tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Descrição: "
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/item3Tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Valor: R$"
         android:textSize="20sp" />
 
     <TextView
         android:id="@+id/debtTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Você deve: R$"
+        android:text="Total: R$"
         android:textSize="20sp" />
 </LinearLayout>

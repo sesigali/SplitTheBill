@@ -16,9 +16,9 @@ class PersonActivity : AppCompatActivity() {
         ActivityPersonBinding.inflate(layoutInflater)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
-    }
+//    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+//        super.onCreate(savedInstanceState, persistentState)
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,9 +31,13 @@ class PersonActivity : AppCompatActivity() {
         receivedPerson?.let { person ->
             with(binding) {
                 nameEt.setText(person.name)
-                spentEt.setText(person.spent)
-                debtEt.setText(person.debt)
-                descriptionEt.setText(person.description)
+                spent1Et.setText(person.spent1)
+                spent2Et.setText(person.spent2)
+                spent3Et.setText(person.spent3)
+                description1Et.setText(person.description1)
+                description2Et.setText(person.description2)
+                description3Et.setText(person.description3)
+                //debt.setText(person.debt)
             }
         }
 
@@ -43,9 +47,13 @@ class PersonActivity : AppCompatActivity() {
         // Configura a atividade com base na visualização somente leitura
         with(binding) {
             nameEt.isEnabled = !viewOnly
-            spentEt.isEnabled = !viewOnly
-            debtEt.isEnabled = !viewOnly
-            descriptionEt.isEnabled = !viewOnly
+            spent1Et.isEnabled = !viewOnly
+            spent2Et.isEnabled = !viewOnly
+            spent3Et.isEnabled = !viewOnly
+            //debtEt.isEnabled = !viewOnly
+            description1Et.isEnabled = !viewOnly
+            description2Et.isEnabled = !viewOnly
+            description3Et.isEnabled = !viewOnly
 
             // Define a visibilidade do botão "Salvar" com base na variável viewOnly
             saveBt.visibility = if (viewOnly) View.GONE else View.VISIBLE
@@ -57,9 +65,13 @@ class PersonActivity : AppCompatActivity() {
             val person = Person(
                 id = receivedPerson?.id ?: Random(System.currentTimeMillis()).nextInt(),
                 name = binding.nameEt.text.toString(),
-                spent = binding.spentEt.text.toString(),
-                debt = binding.debtEt.text.toString(),
-                description = binding.descriptionEt.text.toString()
+                spent1 = binding.spent1Et.text.toString(),
+                spent2 = binding.spent2Et.text.toString(),
+                spent3 = binding.spent3Et.text.toString(),
+                description1 = binding.description1Et.text.toString(),
+                description2 = binding.description2Et.text.toString(),
+                description3 = binding.description3Et.text.toString(),
+                debt = binding.toString()
             )
 
             // Cria uma Intent de resultado e adiciona a Person como um extra

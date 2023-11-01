@@ -26,16 +26,27 @@ class MainActivity : AppCompatActivity() {
     private lateinit var personAdapter: PersonAdapter
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
 
-    // Função para calcular as dívidas com base nos gastos das pessoas
+    // Função para calcular com base nos gastos das pessoas
     private fun modifyPersonList() {
-        var totalMoneyAmount = 0.0
+        var itemZero = 0.0
+        //var totalMoneyAmount = 0.0
         for (person in personList) {
-            totalMoneyAmount += person.spent.toDouble()
+            person.debt = itemZero.toString()
+            if (person.description1 != null) {
+                person.debt += person.spent1.toDouble().toString()
+                if (person.description2 != null) {
+                    person.debt += person.spent2.toDouble().toString()
+                    if (person.description3 != null) {
+                        person.debt += person.spent3.toDouble().toString()
+                    }
+                }
+            }
+            //totalMoneyAmount += person.debt.toDouble()
         }
-        val dividedMoneyAmount = totalMoneyAmount / personList.size
-        for (person in personList) {
-            person.debt = (dividedMoneyAmount - person.spent.toDouble()).toString()
-        }
+//        val dividedMoneyAmount = totalMoneyAmount / personList.size
+//        for (person in personList) {
+//            person.debt = (dividedMoneyAmount - person.spent1.toDouble()).toString()
+//       }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -88,7 +99,7 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         if (personList.size > 0) {
-            // Calcula as dívidas quando há pessoas na lista
+            // Calcula quando há pessoas na lista
             modifyPersonList()
         }
     }
@@ -125,9 +136,9 @@ class MainActivity : AppCompatActivity() {
         val position = (item.menuInfo as AdapterView.AdapterContextMenuInfo).position
         return when (item.itemId) {
             R.id.removePersonMi -> {
-                // Remove uma pessoa da lista e atualiza as dívidas
+                // Remove uma pessoa da lista e atualiza
                 personList.removeAt(position)
-                modifyPersonList()
+                //modifyPersonList()
                 // Notifica o adaptador de que os dados mudaram
                 personAdapter.notifyDataSetChanged()
                 true

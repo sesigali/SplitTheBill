@@ -7,7 +7,11 @@ import kotlinx.parcelize.Parcelize
 data class Person(
     val id: Int,
     var name: String,
-    var spent: String,
+    var spent1: String,
+    var spent2: String,
+    var spent3: String,
     var debt: String,
-    var description: String,
+    var description1: String,
+    var description2: String,
+    var description3: String,
 ): Parcelable

@@ -17,39 +17,72 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
-        android:id="@+id/spentEt"
+        android:id="@+id/description1Et"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Valor gasto"
+        android:hint="Descrição Item 1:"
         app:layout_constraintTop_toBottomOf="@id/nameEt"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
-        android:id="@+id/debtEt"
+        android:id="@+id/spent1Et"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Debt value"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/spentEt"
+        android:hint="Valor gasto"
+        app:layout_constraintTop_toBottomOf="@id/description1Et"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
-        android:id="@+id/descriptionEt"
+        android:id="@+id/description2Et"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Descrição"
-        app:layout_constraintTop_toBottomOf="@id/debtEt"
+        android:hint="Descrição Item 2:"
+        app:layout_constraintTop_toBottomOf="@id/spent1Et"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/spent2Et"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:hint="Valor gasto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.842"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/description1Et" />
+
+    <EditText
+        android:id="@+id/description3Et"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:hint="Descrição Item 3:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spent2Et" />
+
+    <EditText
+        android:id="@+id/spent3Et"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Valor gasto"
+        app:layout_constraintTop_toBottomOf="@id/description3Et"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
     <Button
         android:id="@+id/saveBt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="Salvar"
-        app:layout_constraintTop_toBottomOf="@id/descriptionEt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.842"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/spent3Et" />
 </androidx.constraintlayout.widget.ConstraintLayout>
